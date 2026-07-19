@@ -1,7 +1,0 @@
-buildCommand: |
-  set -eu
-  mvn clean deploy -P springbootjar -Drevision=$IMAGE_TAG && \
-  docker buildx build --push --file=Dockerfile \
-    --build-arg appd_baseimage={{.GRAPH_appd_baseimage}} \
-    -t repo.build.ctsa8cs.com:18080/hsbc-11497556-riskitgra-wren/gra-wren-state-api:$IMAGE_TAG . && \
-  docker tag repo.build.ctsa8cs.com:18080/hsbc-11497556-riskitgra-wren/gra-wren-state-api:$IMAGE_TAG nexus3.systems.uk.hsbc:18080/hsbc-11497556-riskitgra-wren/gra-wren-state-api:$IMAGE_TAG
